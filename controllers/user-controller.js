@@ -3,9 +3,6 @@ const { User } = require('../models')
 const userController = {
     getAllUser(req, res) {
         User.find({})
-        .populate({
-            path: 'users'
-        })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err)
@@ -15,14 +12,17 @@ const userController = {
 
     getUserById({params}, res) {
         User.findOne({ _id: params.id})
-        .populate({
-            path: 'users'
-        })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err)
             res.sendStatus(400)
         })
+    },
+
+    addUser({ body }, res) {
+        User.create(body)
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => res.json(err))
     }
 }
 

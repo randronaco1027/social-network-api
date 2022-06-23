@@ -1,8 +1,8 @@
 const router = require('express').Router()
 
-const { getAllUser, getUserById} = require('../../controllers/user-controller')
+const { getAllUser, getUserById, addUser} = require('../../controllers/user-controller')
 
-router.route('/').get(getAllUser)
+router.route('/').get(getAllUser).post(addUser)
 
 router.route('/:id').get(getUserById)
 
