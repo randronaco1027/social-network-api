@@ -24,9 +24,6 @@ const thoughtController = {
 
     getAllThoughts(req, res) {
         Thought.find({})
-            .populate({
-                path: 'thoughts'
-            })
             .then(dbThoughtData => res.json(dbThoughtData))
             .catch(err => {
                 console.log(err)
@@ -36,14 +33,11 @@ const thoughtController = {
 
     getThoughtById({ params }, res) {
         Thought.findOne({ _id: params.id })
-            .populate({
-                path: 'thoughts'
-            })
             .then(dbThoughtData => res.json(dbThoughtData))
             .catch(err => {
-                console.log(err)
-                res.sendStatus(400)
-            })
+                console.log(err);
+                res.sendStatus(400);
+            });
     },
 
     editThought({ params, body }, res) {
