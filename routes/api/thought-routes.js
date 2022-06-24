@@ -5,7 +5,7 @@ const {addThought, getAllThoughts, getThoughtById, editThought, deleteThought} =
 router.route('/:userId').post(addThought)
 
 //Routes by thoughtId
-router.route('/:userId/:thoughtId').get(getThoughtById).put(editThought).delete(deleteThought)
+router.route('/:id').get(getThoughtById).put(editThought).delete(deleteThought)
 
 //All thoughts
 router.route('/').get(getAllThoughts)
